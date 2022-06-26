@@ -33,7 +33,7 @@ Route::view('/login', 'user/login');
 Route::view('/account', 'user/account');
 
 Route::view('/association', 'association/associations');
-Route::view('/single', 'association/profile');
+Route::view('/single_profile', 'association/profile');
 
 
 Route::view('admin' , 'admin/admin_master');

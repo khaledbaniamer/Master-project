@@ -20,12 +20,10 @@
       <div class="categories">
         <h3 class="p-4">City</h3>
         <ul class="p-0 mx-2">
-            <li><a href="#">Brandy <span class="fa fa-chevron-right"></span></a></li>
-            <li><a href="#">Gin <span class="fa fa-chevron-right"></span></a></li>
-            <li><a href="#">Rum <span class="fa fa-chevron-right"></span></a></li>
-            <li><a href="#">Tequila <span class="fa fa-chevron-right"></span></a></li>
-            <li><a href="#">Vodka <span class="fa fa-chevron-right"></span></a></li>
-            <li><a href="#">Whiskey <span class="fa fa-chevron-right"></span></a></li>
+            <li><a href="#">Irbed <span class="fa fa-chevron-right"></span></a></li>
+            <li><a href="#">Amman <span class="fa fa-chevron-right"></span></a></li>
+            <li><a href="#">Zarqa <span class="fa fa-chevron-right"></span></a></li>
+            <li><a href="#">Other <span class="fa fa-chevron-right"></span></a></li>
         </ul>
      
       </div>
