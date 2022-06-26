@@ -50,3 +50,11 @@ Route::view('admin/update_category' , 'admin/update_category');
 Route::view('admin/association' , 'admin/association');
 Route::view('admin/add_assoc' , 'admin/add_assoc');
 Route::view('admin/view_assoc' , 'admin/view_assoc');
+
+
+Route::view('admin/orders' , '/admin/orders');
+
+
+Route::view('admin/users' , '/admin/users');
+Route::view('admin/update_user' , '/admin/update_user');
+Route::view('admin/add_user' , '/admin/add_user');

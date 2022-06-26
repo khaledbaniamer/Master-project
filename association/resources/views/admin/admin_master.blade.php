@@ -78,15 +78,15 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
+            <a href="/admin/orders">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Orders</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
+            <a href="/admin/users">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Users</p>
             </a>
           </li>
           <li>

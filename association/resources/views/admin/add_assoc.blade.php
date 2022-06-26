@@ -29,6 +29,14 @@
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Association Manager</label>
+      <select name="" class="form-control" id="">
+        <option value="">test</option>
+      </select>
+  </div>
+
+
+    <div class="mb-3">
         <label class="form-label">Association Image</label>
         <input type="file" class="form-control" placeholder="Enter Association Date ..." name="assoc_image">
     </div>
