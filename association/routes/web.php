@@ -37,3 +37,16 @@ Route::view('/single_profile', 'association/profile');
 
 
 Route::view('admin' , 'admin/admin_master');
+Route::view('admin/products' , 'admin/products');
+Route::view('admin/add_product' , 'admin/add_product');
+Route::view('admin/update_product' , 'admin/update_product');
+
+
+Route::view('admin/categories' , 'admin/category');
+Route::view('admin/add_category' , 'admin/add_category');
+Route::view('admin/update_category' , 'admin/update_category');
+
+
+Route::view('admin/association' , 'admin/association');
+Route::view('admin/add_assoc' , 'admin/add_assoc');
+Route::view('admin/view_assoc' , 'admin/view_assoc');
