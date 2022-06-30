@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,15 +38,22 @@ Route::view('/association', 'association/associations');
 Route::view('/single_profile', 'association/profile');
 
 
+// Admin Routes 
+
 Route::view('admin' , 'admin/admin_master');
 Route::view('admin/products' , 'admin/products');
+
 Route::view('admin/add_product' , 'admin/add_product');
+Route::post('admin/add_product' , [ProductController::class , 'add_product']);
+
 Route::view('admin/update_product' , 'admin/update_product');
 
 
-Route::view('admin/categories' , 'admin/category');
+Route::get('admin/categories' , [CategoryController::class , 'show_category']);
 Route::view('admin/add_category' , 'admin/add_category');
-Route::view('admin/update_category' , 'admin/update_category');
+Route::post('admin/add_category' , [CategoryController::class , 'add_category']);
+
+Route::get('admin/update_category/{id}' , [CategoryController::class,'single_category']);
 
 
 Route::view('admin/association' , 'admin/association');
@@ -58,3 +67,5 @@ Route::view('admin/orders' , '/admin/orders');
 Route::view('admin/users' , '/admin/users');
 Route::view('admin/update_user' , '/admin/update_user');
 Route::view('admin/add_user' , '/admin/add_user');
+
+// End Admin Routes

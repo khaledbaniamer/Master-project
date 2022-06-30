@@ -21,16 +21,19 @@
   
     <!--Table body-->
     <tbody>
+      @foreach ($categories as $category)
       <tr>
-        <th class="text-center p-3">4</th>
-        <td class="text-center p-3">Jerry</td>
-        <td class="text-center p-3">Horwitz</td>
+        <th class="text-center p-3">{{$category->id}}</th>
         <td class="text-center p-3">
-            <a class="m-3" href="/admin/update_category"><i class="fa-solid fa-pen-to-square" style="font-size: 20px ;color:rgb(77, 235, 77)"></i></i></a>
+          <img src="{{url($category->category_image)}}" alt="" width="100px" height="100px">
+        </td>
+        <td class="text-center p-3">{{$category->category_name}}</td>
+        <td class="text-center p-3">
+            <a class="m-3" href="/admin/update_category/{{$category->id}}"><i class="fa-solid fa-pen-to-square" style="font-size: 20px ;color:rgb(77, 235, 77)"></i></i></a>
             <a class="m-3" href=""><i class="fa-solid fa-trash-can" style="font-size: 20px ;color:red"></i></a>
         </td>
       </tr>
-     
+      @endforeach
     </tbody>
     <!--Table body-->
   
