@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
+use App\Models\Manager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,9 +57,12 @@ Route::view('admin/add_category' , 'admin/add_category');
 Route::post('admin/add_category' , [CategoryController::class , 'add_category']);
 
 Route::get('admin/update_category/{id}' , [CategoryController::class,'single_category']);
+Route::post('admin/update_category/{id}' , [CategoryController::class,'update_category']);
+
+Route::get('admin/delete_category/{id1}' , [CategoryController::class,'delete_category']);
 
 
-Route::view('admin/association' , 'admin/association');
+Route::get('admin/association' , [AssociationController::class , 'association']);
 Route::view('admin/add_assoc' , 'admin/add_assoc');
 Route::view('admin/view_assoc' , 'admin/view_assoc');
 
@@ -67,5 +73,14 @@ Route::view('admin/orders' , '/admin/orders');
 Route::view('admin/users' , '/admin/users');
 Route::view('admin/update_user' , '/admin/update_user');
 Route::view('admin/add_user' , '/admin/add_user');
+
+
+Route::get('/admin/managers' , [ManagerController::class,'show_managers']);
+Route::view('/admin/add_managers' , '/admin/add_managers');
+Route::post('/admin/add_manager' , [ManagerController::class , 'add_manager']);
+
+Route::get('/admin/update_manager/{id}' ,[ManagerController::class , 'single_manager']);
+Route::post('/admin/update_manager/{id}' , [ManagerController::class , 'update_manager']);
+Route::get('/admin/delete_manager/{id}' , [ManagerController::class , 'delete_manager']);
 
 // End Admin Routes

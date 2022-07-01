@@ -23,21 +23,24 @@
   
     <!--Table body-->
     <tbody>
+      @foreach ($associations as $assoc)
+          
+      
       <tr>
-        <th class="text-center p-3">4</th>
-        <td class="text-center p-3">Jerry</td>
-        <td class="text-center p-3">Horwitz</td>
-        <td class="text-center p-3">Italy</td>
+        <th class="text-center p-3">{{$assoc->id}}</th>
+        <td class="text-center p-3">{{$assoc->assoc_name}}</td>
+        <td class="text-center p-3">{{$assoc->assoc_location}}</td>
+        <td class="text-center p-3">{{$assoc->manager_name}}</td>
+        <td class="text-center p-3">{{$assoc->assoc_phone}}</td>
 
-        <td class="text-center p-3">41</td>
+        <td class="text-center p-3">{{$assoc->assoc_email}}</td>
         <td class="text-center p-3">
-            <a class="m-3" href="/admin/view_assoc"><i class="fa-solid fa-eye" style="font-size: 20px ; color:rgba(50, 55, 116, 0.715)"></i></a>
+            {{-- <a class="m-3" href="/admin/view_assoc"><i class="fa-solid fa-eye" style="font-size: 20px ; color:rgba(50, 55, 116, 0.715)"></i></a> --}}
+            <a class="m-3" href="/admin/view_assoc"><i class="fa-solid fa-pen-to-square" style="font-size: 20px ;color:rgb(77, 235, 77)"></i></a>
             <a class="m-3" href=""><i class="fa-solid fa-trash-can" style="font-size: 20px ;color:red"></i></a>
         </td>
       </tr>
-     
-    </tbody>
-    <!--Table body-->
+    @endforeach
   
   </table>
   <!--Table-->
