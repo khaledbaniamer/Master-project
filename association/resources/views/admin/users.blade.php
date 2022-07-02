@@ -4,6 +4,14 @@
 <hr>
     <h2 class="mt-4">Users</h2>
     <a href="/admin/add_user" class="btn btn-primary">Add New User</a>
+
+    
+    @if ($message = Session::get('delete'))
+      <div class="alert alert-success">
+      {{ $message }}
+      </div>
+    @endif
+
 <!--Table-->
 <table class="table table-hover table-fixed">
 
@@ -25,21 +33,46 @@
   
     <!--Table body-->
     <tbody>
-      <tr>
-        <th class="text-center p-3">4</th>
-        <td class="text-center p-3">Jerry</td>
-        <td class="text-center p-3">Horwitz</td>
-        <td class="text-center p-3"></td>
-        <td class="text-center p-3"></td>
-        <td class="text-center p-3"></td>
-        <td class="text-center p-3">
-            <a class="m-3" href="/admin/update_user"><i class="fa-solid fa-pen-to-square" style="font-size: 20px ;color:rgb(77, 235, 77)"></i></i></a>
+      @foreach ($users as $user)
 
-            <a class="m-3" href=""><i class="fa-solid fa-trash-can" style="font-size: 20px ;color:red"></i></a>
+      <tr>
+        <th class="text-center p-3">{{$user->id}}</th>
+        <td class="text-center p-3">{{$user->user_name}}</td>
+        <td class="text-center p-3">{{$user->user_email}}</td>
+        <td class="text-center p-3">{{$user->user_location}}</td>
+        <td class="text-center p-3">{{$user->user_phone}}</td>
+        <td class="text-center p-3">{{$user->created_at}}</td>
+        <td class="text-center p-3">
+            <a class="m-3" href="/admin/update_user/{{$user->id}}"><i class="fa-solid fa-pen-to-square" style="font-size: 20px ;color:rgb(77, 235, 77)"></i></i></a>
+
+            <span class="text-center">
+              <!-- Button HTML (to Trigger Modal) -->
+              <a href="#t{{$user->id}}" class="trigger-btn" data-toggle="modal"><i class="fa-solid fa-trash-can" style="font-size: 20px ;color:red"></i></a>
+            </span>
+            
+            <!-- Modal HTML -->
+            <div id="t{{$user->id}}" class="modal fade">
+              <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                  <div class="modal-header flex-column">						
+                    <h4 class="modal-title w-100">Are you sure?</h4>	
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Do you really want to delete these User? This process cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer justify-content-center ">
+                    <a href="/admin/categories" class="btn btn-secondary m-2" data-dismiss="modal">Cancel</a>
+                    <a href="/admin/delete_user/{{$user->id}}" class="btn btn-danger m-2">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
         
         </td>
     </tr>
-     
+    @endforeach
     </tbody>
     <!--Table body-->
   

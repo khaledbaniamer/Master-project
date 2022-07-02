@@ -4,6 +4,7 @@ use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Route;
 
@@ -63,15 +64,26 @@ Route::get('admin/delete_category/{id1}' , [CategoryController::class,'delete_ca
 
 
 Route::get('admin/association' , [AssociationController::class , 'association']);
-Route::view('admin/add_assoc' , 'admin/add_assoc');
-Route::view('admin/view_assoc' , 'admin/view_assoc');
+
+Route::get('admin/add_assoc' , [AssociationController::class , 'show_add_assoc']);
+Route::post('admin/add_assoc' , [AssociationController::class , 'add_assoc']);
+
+Route::get('admin/update_assoc/{id}' , [AssociationController::class , 'single_assoc']);
+Route::post('admin/update_assoc/{id}' , [AssociationController::class , 'update_assoc']);
+
+Route::get('admin/delete_assoc/{id}' , [AssociationController::class , 'delete_assoc']);
 
 
 Route::view('admin/orders' , '/admin/orders');
 
 
-Route::view('admin/users' , '/admin/users');
-Route::view('admin/update_user' , '/admin/update_user');
+Route::get('admin/users' , [UserController::class , 'users']);
+Route::post('admin/add_user' , [UserController::class , 'add_user']);
+
+Route::get('admin/update_user/{id}' , [UserController::class , 'single_user']);
+Route::post('admin/update_user/{id}' , [UserController::class , 'update_user']);
+
+Route::get('admin/delete_user/{id}' , [UserController::class , 'delete_user']);
 Route::view('admin/add_user' , '/admin/add_user');
 
 
