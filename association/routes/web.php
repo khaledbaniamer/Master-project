@@ -35,6 +35,8 @@ Route::view('/single', 'products/single_product');
 
 
 Route::view('/signup', 'user/signup');
+Route::post('/signup', [UserController::class , 'signup']);
+
 Route::view('/login', 'user/login');
 Route::view('/account', 'user/account');
 

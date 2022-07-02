@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    // Admin side
     public function users()
     {
         $users = User::all();
@@ -86,5 +87,39 @@ class UserController extends Controller
         $delete = User::find($id);
         $delete->delete();
         return redirect('admin/users')->with('delete' , 'User has been deleted successfully');
+    }
+
+    // End Admin Side
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // User Side 
+    public function signup(Request $request)
+    {
+        $request->validate([
+            'user_name'=>'required',
+            'user_email'=>'required|email|unique:users,user_email',
+            'user_phone'=>'required|unique:users,user_phone|regex:/^([0]{1}[7-9]{1})([0-9]{8})$/',
+            'user_address'=>'required',
+            'user_password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+            'confirm_user_password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+        ]);
+        $pass = $request->user_password;
+        $confirm_pass = $request->confirm_user_password;
+
+        if($pass !== $confirm_pass)
+        {
+            return redirect("/signup")->with('match' , 'Confirm Password does not match');
+        }
+        $user = new User();
+        $user->user_name = $request->user_name;
+        $user->user_email = $request->user_email;
+        $user->user_location = $request->user_address;
+        $user->user_phone = $request->user_phone;
+        $user->user_password = Crypt::encrypt($pass);
+
+        $user->save();
+        return redirect('/signup')->with('success' , 'User has been added successfully');
     }
 }
