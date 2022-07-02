@@ -1,10 +1,23 @@
-@extends('admin.admin_master')
+@extends('master')
 
-@section('admin_content')
-<hr>
-<h2>Update Association</h2>
-<div class="container" >
+@section('content')
+<section class="hero-wrap hero-wrap-2 mb-4" style="background-image: url({{asset('style/images/bg_2.jpg')}});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate mb-5 text-center">
+            <p class="breadcrumbs mb-0"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span>Edit Association <i class="fa fa-chevron-right"></i></span></p>
+          <h2 class="mb-0 bread">Edit Association</h2>
+        </div>
+      </div>
+    </div>
+  </section>
 
+<section>
+
+    <div class="container" >
+    <h2>Add New Association</h2>
+    <a class="btn btn-primary" href="/assoc_products/{{$assoc->id}}">Products</a>
 <form style="width: 50%" action="update_assoc" method="POST" enctype="multipart/form-data">
   @csrf
 <input type="hidden" value="{{$assoc->id}}" name="assoc_id" />
@@ -60,7 +73,7 @@
     @enderror
     
     
-    <div class="mt-3">
+    {{-- <div class="mt-3">
       <label class="form-label">Association Manager</label>
       <select name="assoc_managers" class="form-control" id="">
         <option value="" disabled selected>Choose Manager</option>
@@ -74,7 +87,7 @@
         @endif
         @endforeach
       </select>
-    </div>
+    </div> --}}
     
     @error('assoc_managers')
       <div style="color: #ff0000;">{{$message}}</div>
@@ -96,11 +109,13 @@
       <div style="color: #ff0000;">{{$message}}</div>
     @enderror
 
-    <div class="mt-3">
-        <img src="{{url($assoc->assoc_image)}}" alt="" width="100px" height="100px">
+    <div class="mt-3 mb-3">
+        <img src="{{asset($assoc->assoc_image)}}" alt="" width="100px" height="100px">
     </div>
     
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
-@endsection
+</section>
+
+  @endsection

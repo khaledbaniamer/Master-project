@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 
     <link rel="stylesheet" href="{{asset('style/css/animate.css')}}">
     
@@ -17,6 +19,8 @@
     
     <link rel="stylesheet" href="{{asset('style/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('style/css/style.css')}}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
   </head>
   <body>
     <div class="wrap">
@@ -38,7 +42,16 @@
                     </p>
             </div>
             <div class="reg">
-                <p class="mb-0"><a href="/signup" class="mr-2">Sign Up</a> <a href="/login">Log In</a></p>
+                <p class="mb-0">
+                  @if (session()->has('name'))
+                  <a href="/account" class="mr-2">Account</a>
+                  <a href="/logout">Logout</a>
+                  @else
+
+                  <a href="/signup" class="mr-2">Sign Up</a>
+                   <a href="/login">Log In</a>
+                  @endif
+                  </p>
             </div>
                 </div>
             </div>

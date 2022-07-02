@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Association;
 use App\Models\Manager;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AssociationController extends Controller
@@ -116,5 +117,43 @@ class AssociationController extends Controller
 
             return redirect('/admin/association')->with('delete' , 'Category has been deleted successfully');
         }
+    }
+
+    //End Admin side 
+
+    /////////////////////////////////////////////
+
+    // User side 
+
+    public function user_association()
+    {
+        $assoc = Association::select('associations.*', 'managers.manager_name')
+        ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
+        return view('/association/associations' , ['assocs'=>$assoc]);
+    }
+
+    public function assoc_profile($id)
+    {   
+        
+        $assoc = Association::select('associations.*', 'managers.manager_name')
+        ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->where('associations.id',$id)->first();
+
+        $products = Product::where('assoc_id' , $id);
+
+        return view('association/profile' , ['assoc'=>$assoc , 'products'=>$products]);
+    }
+
+    public function show_edit_assoc($id)
+    {
+        
+        $assoc = Association::select('associations.*', 'managers.manager_name')
+        ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->where('associations.id',$id)->first();
+        // return view('/association/associations' , ['assocs'=>$assoc]);
+        return view('association/edit_assoc' , ['assoc'=>$assoc]);
+    }
+
+    public function assoc_products($id)
+    {
+        return view('association/assoc_products');
     }
 }

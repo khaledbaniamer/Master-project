@@ -29,7 +29,7 @@
                   <div class="col-md-7">
                 <div class="form-group">
                     <label for="firstname">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Name ..." name="user_name">
+                    <input type="text" class="form-control" placeholder="Enter Name ..." name="user_name" value="{{old('user_name')}}">
                 </div>
 
               @error('user_name')
@@ -40,7 +40,7 @@
               <div class="col-md-7">
                     <div class="form-group">
                         <label >Email</label>
-                        <input type="email" step=".01" class="form-control" placeholder="Ex:name@domain.com" name="user_email">
+                        <input type="email" step=".01" class="form-control" placeholder="Ex:name@domain.com" name="user_email" value="{{old('user_email')}}">
                     </div>
 
                 @error('user_email')
@@ -51,7 +51,7 @@
               <div class="col-md-7">
                     <div class="form-group">
                         <label >Address</label>
-                        <input type="text" class="form-control" placeholder="Enter Address ..." name="user_address">
+                        <input type="text" class="form-control" placeholder="Enter Address ..." name="user_address" value="{{old('user_address')}}">
                     </div>
                 @error('user_address')
                   <div style="color: #ff0000;">{{$message}}</div>
@@ -61,7 +61,7 @@
               <div class="col-md-7">
                     <div class="form-group">
                         <label >Phone</label>
-                        <input type="text" class="form-control" placeholder="Ex:07xxxxxxxx" name="user_phone">
+                        <input type="text" class="form-control" placeholder="Ex:07xxxxxxxx" name="user_phone" value="{{old('user_phone')}}">
                     </div>
                 @error('user_phone')
                   <div style="color: #ff0000;">{{$message}}</div>
@@ -69,19 +69,19 @@
                 </div>
 
                 <div class="col-md-7">
-                    <div class="form-group">
-                        <label >Password</label>
-                        <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )" name="user_password">
-                    </div>
-                @error('user_password')
-                  <div style="color: #ff0000;">{{$message}}</div>
-                @enderror 
-                </div>
+                  <div class="form-group">
+                      <label >Password</label>
+                      <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )" name="user_password" value="{{old('user_phone')}}">
+                  </div>
+              @error('user_phone')
+                <div style="color: #ff0000;">{{$message}}</div>
+              @enderror
+              </div>
 
                 <div class="col-md-7">
                     <div class="form-group">
                         <label >Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )"name="confirm_user_password">
+                        <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )"name="confirm_user_password" value="{{old('confirm_user_password')}}">
                     </div>
                     
                 @error('confirm_user_password')
@@ -107,5 +107,25 @@
                 </div>
 
     </section>     
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+  </script>
 
 @endsection

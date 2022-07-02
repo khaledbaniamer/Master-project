@@ -13,37 +13,54 @@
     </div>
   </section>
 
+
   <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
-                    <form action="#" class="billing-form">
+        <form action="login" method="POST" class="billing-form">
                         <h3 class="mb-4 billing-heading">Login</h3>
+                        @csrf
               <div class="row align-items-end">
                   <div class="col-md-7">
                 <div class="form-group">
                     <label for="firstname">Email</label>
-                  <input type="text" class="form-control" placeholder="Enter Name">
+                  <input type="text" class="form-control" placeholder="Ex:name@domain.com" name="email">
                 </div>
+                @error('email')
+                  <div style="color: #ff0000;">{{$message}}</div>
+                @enderror
+
+                @if ($message = Session::get('email'))
+                <div style="color: #ff0000;">{{$message}}</div>
+              @endif
               </div>
               <div class="col-md-7">
                     <div class="form-group">
                         <label for="lastname">Password</label>
-                    <input type="text" class="form-control" placeholder="Ex name@domain.com">
+                    <input type="password" class="form-control" placeholder="Enter Password" name="password">
                     </div>
+                    @error('password')
+                      <div style="color: #ff0000;">{{$message}}</div>
+                    @enderror
+
+                  @if ($message = Session::get('pass'))
+                     <div style="color: #ff0000;">{{$message}}</div>
+                  @endif
+
                 </div>
 
 
                 <div class="col-md-7">
                     <div class="form-group">
 
-                    <input type="submit" class="btn btn-primary py-3 px-5" value="Signup" >
+                    <input type="submit" class="btn btn-primary py-3 px-5" value="SignIn" >
                     </div>
                 </div>
  
                     </div>
                 </div>
-
+      </form>
             </section>     
 
 @endsection

@@ -38,10 +38,21 @@ Route::view('/signup', 'user/signup');
 Route::post('/signup', [UserController::class , 'signup']);
 
 Route::view('/login', 'user/login');
-Route::view('/account', 'user/account');
+Route::post('/login', [UserController::class , 'login']);
 
-Route::view('/association', 'association/associations');
-Route::view('/single_profile', 'association/profile');
+Route::get('/logout' , [UserController::class , 'logout']);
+
+Route::get('/account', [UserController::class , 'account']);
+Route::post('/account', [UserController::class , 'update_account']);
+
+
+
+Route::get('/association', [AssociationController::class , 'user_association']);
+Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+
+Route::get('/assoc_products/{id}', [AssociationController::class , 'assoc_products']);
+
+Route::get('/edit_assoc/{id}', [AssociationController::class , 'show_edit_assoc']);
 
 
 // Admin Routes 

@@ -32,53 +32,25 @@
 </div>
   <div class="container col-9 mt-5 pt-5">
     <h3 class="text-start">Associations</h3>
+    @foreach ($assocs as $assoc)
+        
     <div class="row">
       <div class="col-9 my-4">
         <div class="card">
-          <h5 class="card-header">Featured</h5>
+          <h5 class="card-header">{{$assoc->assoc_name}}</h5>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Manager : {{$assoc->manager_name}}</h5>
+            <h5 class="card-title">Email : {{$assoc->assoc_email}}</h5>
+            <h5 class="card-title">Phone : {{$assoc->assoc_phone}}</h5>
+            <h5 class="card-title">Address : {{$assoc->assoc_location}}</h5>
+            <p class="card-text">{{$assoc->assoc_description}}</p>
+            <a href="assoc_profile/{{$assoc->id}}" class="btn btn-primary">Show Profile</a>
           </div>
         </div>
       </div>
-
-      <div class="col-9 my-4">
-        <div class="card">
-          <h5 class="card-header">Featured</h5>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-9 my-4">
-        <div class="card">
-          <h5 class="card-header">Featured</h5>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-9 my-4">
-        <div class="card">
-          <h5 class="card-header">Featured</h5>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
+    @endforeach
+
 </section>    
 
 
