@@ -30,8 +30,11 @@
     </div>
   </div>
 </div>
-  <div class="container col-9 mt-5 pt-5">
+
+
+  <div class="container col-8 mt-5 pt-5">
     <h3 class="text-start">Associations</h3>
+    <a href="/assoc_register" class="btn btn-primary my-4">Join</a>
     @foreach ($assocs as $assoc)
         
     <div class="row">

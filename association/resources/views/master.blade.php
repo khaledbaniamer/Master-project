@@ -214,6 +214,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{asset('style/js/google-map.js')}}"></script>
   <script src="{{asset('style/js/main.js')}}"></script>
-    
+  <script src="https://kit.fontawesome.com/909808575d.js" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -149,28 +149,12 @@
     <div class="container mt-5">
     <div class="row">
 
-        <div class="col-md-4 d-flex">
-            <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
-                    <div class="desc">
-                        <p class="meta-prod d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
-                </div>
-            </div>
-        </div>
+      @foreach ($products as $product)
+          
 
         <div class="col-md-4 d-flex">
             <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
+                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset($product->prod_image)}});">
                     <div class="desc">
                         <p class="meta-prod d-flex">
                             <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -180,88 +164,15 @@
                     </div>
                 </div>
                 <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
+                    <span class="category">{{$product->prod_name}}</span>
+                    <h2>{{$product->prod_name}}</h2>
+                    <span class="price">{{$product->prod_price}}</span>
                 </div>
             </div>
         </div>
+        @endforeach
 
-        <div class="col-md-4 d-flex">
-            <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
-                    <div class="desc">
-                        <p class="meta-prod d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4 d-flex">
-            <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
-                    <div class="desc">
-                        <p class="meta-prod d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-            <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
-                    <div class="desc">
-                        <p class="meta-prod d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-            <div class="product ftco-animate">
-                <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-9.jpg')}});">
-                    <div class="desc">
-                        <p class="meta-prod d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="text text-center">
-                    <span class="category">Whiskey</span>
-                    <h2>Screwball</h2>
-                    <span class="price">$69.00</span>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>

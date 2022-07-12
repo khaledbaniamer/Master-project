@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Association;
+use App\Models\Category;
 use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -87,5 +89,17 @@ class ManagerController extends Controller
         $delete->delete();
 
         return redirect('/admin/managers')->with('delete' , 'Manager has been deleted successfully');
+    }
+
+    public function add_new_product_form()
+    {
+        $categories = Category::all();
+        $asscos = Association::all();
+        return view('association/assoc_new_product' , ['categories'=>$categories , 'asscos'=>$asscos]);
+    }
+
+    public function add_new_product(Request $request)
+    {
+
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailController;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Route;
 
@@ -47,12 +48,7 @@ Route::post('/account', [UserController::class , 'update_account']);
 
 
 
-Route::get('/association', [AssociationController::class , 'user_association']);
-Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
 
-Route::get('/assoc_products/{id}', [AssociationController::class , 'assoc_products']);
-
-Route::get('/edit_assoc/{id}', [AssociationController::class , 'show_edit_assoc']);
 
 
 // Admin Routes 
@@ -109,3 +105,31 @@ Route::post('/admin/update_manager/{id}' , [ManagerController::class , 'update_m
 Route::get('/admin/delete_manager/{id}' , [ManagerController::class , 'delete_manager']);
 
 // End Admin Routes
+
+// Manager Routes
+Route::get('/association', [AssociationController::class , 'user_association']);
+Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+
+Route::get('/assoc_products/{id}', [AssociationController::class , 'assoc_products']);
+
+Route::get('/edit_assoc/{id}', [AssociationController::class , 'show_edit_assoc']);
+Route::post('/edit_assoc', [AssociationController::class , 'edit_assoc']);
+
+Route::get('/asscoc_addNewProduct/{id}' , [AssociationController::class , 'add_new_product_form']);
+Route::post('/assoc_add_product' , [AssociationController::class , 'add_new_product']);
+
+Route::get('/update_product/{id}' , [AssociationController::class , 'update_product_form']);
+Route::post('/update_product' , [AssociationController::class , 'update_product']);
+
+Route::get('/delete_product/{id}' , [AssociationController::class , 'delete_product']);
+
+Route::get('assoc_register' , [AssociationController::class , 'show_assoc_register']);
+Route::post('assoc_register' , [AssociationController::class , 'assoc_register']);
+
+
+Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
+Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
+
+// Send Email Routes
+
+

@@ -17,12 +17,12 @@
 
     <div class="container" >
     <h2>Add New Association</h2>
-    <a class="btn btn-primary" href="/assoc_products/{{$assoc->id}}">Products</a>
-<form style="width: 50%" action="update_assoc" method="POST" enctype="multipart/form-data">
+    <a class="btn btn-primary" href="/assoc_products/{{$assoc->id}}">New Products</a>
+<form style="width: 50%" action="/edit_assoc" method="POST" enctype="multipart/form-data">
   @csrf
 <input type="hidden" value="{{$assoc->id}}" name="assoc_id" />
   @if ($message = Session::get('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success mt-3">
     {{ $message }}
     </div>
 
@@ -113,7 +113,7 @@
         <img src="{{asset($assoc->assoc_image)}}" alt="" width="100px" height="100px">
     </div>
     
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary mb-4">Update</button>
 </form>
 </div>
 </section>
