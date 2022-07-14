@@ -6,6 +6,7 @@ use App\Models\Association;
 use App\Models\Category;
 use App\Models\Manager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
@@ -37,7 +38,7 @@ class ManagerController extends Controller
         $manager->manager_name = $request->manager_name;
         $manager->manager_email = $request->manager_email;
         $manager->manager_phone = $request->manager_phone;
-        $manager->manager_password = Hash::make($pass);
+        $manager->manager_password = Crypt::encrypt($pass);
 
         $manager->save();
         return redirect('/admin/add_managers')->with('success' , 'Manager has been added Successfully');
@@ -74,7 +75,7 @@ class ManagerController extends Controller
         $update_manager->manager_name = $request->manager_name;
         $update_manager->manager_email = $request->manager_email;
         $update_manager->manager_phone = $request->manager_phone;
-        $update_manager->manager_password = Hash::make($pass);
+        $update_manager->manager_password = Crypt::encrypt($pass);
 
         $update_manager->update();
         return redirect("/admin/update_manager/$id")->with('success' , 'Manager has been Updated Successfully');

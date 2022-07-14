@@ -8,7 +8,7 @@
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-8 ftco-animate d-flex align-items-end">
             <div class="text w-100 text-center">
-              <h1 class="mb-4">Good <span>Drink</span> for Good <span>Moments</span>.</h1>
+              <h1 class="mb-4">Good <span>Shop</span> for Good <span>Moments</span>.</h1>
               <p><a href="#" class="btn btn-primary py-2 px-4">Shop Now</a> <a href="#" class="btn btn-white btn-outline-white py-2 px-4">Read more</a></p>
           </div>
         </div>
@@ -63,15 +63,15 @@
                   </div>
                   <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
             <div class="heading-section">
-                <span class="subheading">Since 1905</span>
-              <h2 class="mb-4">Desire Meets A New Taste</h2>
+                <span class="subheading">Since 2022</span>
+              <h2 class="mb-4">Desire Meets A Traditional</h2>
 
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
               <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
-              <p class="year">
+              {{-- <p class="year">
                   <strong class="number" data-number="115">0</strong>
                   <span>Years of Experience In Business</span>
-              </p>
+              </p> --}}
             </div>
 
                   </div>
@@ -127,8 +127,8 @@
           <div class="container">
               <div class="row justify-content-center pb-5">
         <div class="col-md-7 heading-section text-center ftco-animate">
-            <span class="subheading">Our Delightful offerings</span>
-          <h2>Tastefully Yours</h2>
+            <span class="subheading">Our Delightful Products</span>
+          <h2>Products</h2>
         </div>
       </div>
               <div class="row">

@@ -6,8 +6,8 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate mb-5 text-center">
-            <p class="breadcrumbs mb-0"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span>Login <i class="fa fa-chevron-right"></i></span></p>
-          <h2 class="mb-0 bread">Login</h2>
+            <p class="breadcrumbs mb-0"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span>Admin Login <i class="fa fa-chevron-right"></i></span></p>
+          <h2 class="mb-0 bread">Admin Login</h2>
         </div>
       </div>
     </div>
@@ -18,14 +18,14 @@
     <div class="container">
         <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
-        <form action="login" method="POST" class="billing-form">
-                        <h3 class="mb-4 billing-heading">Login</h3>
+        <form action="admin_login" method="POST" class="billing-form">
+                        <h3 class="mb-4 billing-heading">Admin Login</h3>
                         @csrf
               <div class="row align-items-end">
                   <div class="col-md-7">
                 <div class="form-group">
                     <label for="firstname">Email</label>
-                  <input type="text" class="form-control" placeholder="Ex:name@domain.com" name="email">
+                  <input type="text" class="form-control" placeholder="Ex:name@domain.com" name="email" value="{{old('email')}}">
                 </div>
                 @error('email')
                   <div style="color: #ff0000;">{{$message}}</div>
@@ -38,7 +38,7 @@
               <div class="col-md-7">
                     <div class="form-group">
                         <label for="lastname">Password</label>
-                    <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )" name="password">
+                    <input type="password" class="form-control" placeholder="Enter Password ... " name="password" value="{{old('password')}}">
                     </div>
                     @error('password')
                       <div style="color: #ff0000;">{{$message}}</div>
@@ -50,12 +50,6 @@
 
                 </div>
 
-                <div class="col-md-7">
-                  <div class="form-group">
-                      <label>Login as Admin or Manager <a href="/admin_login">Click Here</a></label>
-
-                  </div>
-                </div>
                 <div class="col-md-7">
                     <div class="form-group">
 

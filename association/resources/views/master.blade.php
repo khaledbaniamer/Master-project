@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Liquor Store - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Association Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -44,12 +44,12 @@
             <div class="reg">
                 <p class="mb-0">
                   @if (session()->has('name'))
-                  <a href="/account" class="mr-2">Account</a>
-                  <a href="/logout">Logout</a>
+                  <a href="/account" class="mr-2 {{Request::is('account') ? 'active' : ''}}">Account</a>
+                  <a href="/logout" >Logout</a>
                   @else
 
-                  <a href="/signup" class="mr-2">Sign Up</a>
-                   <a href="/login">Log In</a>
+                  <a href="/signup" class="mr-2 {{Request::is('signup') ? 'active' : ''}}">Sign Up</a>
+                   <a href="/login" class="{{Request::is('login') ? 'active' : ''}}">Log In</a>
                   @endif
                   </p>
             </div>
@@ -60,7 +60,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="/">Liquor <span>store</span></a>
+      <a class="navbar-brand" href="/">Association <span>store</span></a>
       <div class="order-lg-last btn-group">
       <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="flaticon-shopping-bag"></span>
@@ -101,10 +101,11 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="/association" class="nav-link">Associations</a></li>
-          <li class="nav-item dropdown">
+          <li class="nav-item {{Request::is('/') ? 'active' : ''}}"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item {{Request::is('about') ? 'active' : ''}}"><a href="/about" class="nav-link">About</a></li>
+          <li class="nav-item {{Request::is('association') ? 'active' : ''}}"><a href="/association" class="nav-link">Associations</a></li>
+          <li class="nav-item {{Request::is('product') ? 'active' : ''}}"><a href="/product" class="nav-link">Products</a></li>
+          {{-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
           <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="/product">Products</a>
@@ -112,9 +113,9 @@
             <a class="dropdown-item" href="/cart">Cart</a>
             <a class="dropdown-item" href="/checkout">Checkout</a>
           </div>
-        </li>
-          <li class="nav-item active"><a href="/blog" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+        </li> --}}
+          <li class="nav-item {{Request::is('blog') ? 'active' : ''}}"><a href="/blog" class="nav-link">Blog</a></li>
+          <li class="nav-item {{Request::is('contact') ? 'active' : ''}}"><a href="/contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -129,7 +130,7 @@
           <div class="row mb-5">
             <div class="col-sm-12 col-md">
               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2 logo"><a href="#">Liquor <span>Store</span></a></h2>
+                <h2 class="ftco-heading-2 logo"><a href="#">Association <span>Store</span></a></h2>
                 <p>Far far away, behind the word mountains, far from the countries.</p>
                 <ul class="ftco-footer-social list-unstyled mt-2">
                   <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>

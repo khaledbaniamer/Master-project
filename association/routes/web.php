@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManagerController;
@@ -47,11 +48,20 @@ Route::get('/account', [UserController::class , 'account']);
 Route::post('/account', [UserController::class , 'update_account']);
 
 
-
+Route::view('/admin_login', 'user/admin_login');
+Route::post('/admin_login', [AdminController::class , 'admin_login']);
 
 
 
 // Admin Routes 
+
+Route::get('admin/admins',[AdminController::class , 'show_admins']);
+Route::view('admin/add_admin' , 'admin/add_admin');
+
+Route::post('admin/add_admin' , [AdminController::class , 'add_admin']);
+Route::get('admin/update_admin/{id}' , [AdminController::class , 'show_update_admin']);
+
+Route::post('admin/update_admin' , [AdminController::class , 'update_admin']);
 
 Route::view('admin' , 'admin/admin_master');
 Route::view('admin/products' , 'admin/products');
