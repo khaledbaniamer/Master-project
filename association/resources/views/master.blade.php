@@ -43,7 +43,7 @@
             </div>
             <div class="reg">
                 <p class="mb-0">
-                  @if (session()->has('name'))
+                  @if (session()->has('name') || session()->has('manager_id'))
                   <a href="/account" class="mr-2 {{Request::is('account') ? 'active' : ''}}">Account</a>
                   <a href="/logout" >Logout</a>
                   @else

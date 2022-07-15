@@ -36,14 +36,21 @@ Route::view('/product', 'products/product');
 Route::view('/single', 'products/single_product');
 
 
-Route::view('/signup', 'user/signup');
-Route::post('/signup', [UserController::class , 'signup']);
+// User middleware if he logged in 
 
-Route::view('/login', 'user/login');
-Route::post('/login', [UserController::class , 'login']);
+Route::group(['middleware'=>['user']], function(){
+    
+    Route::view('/signup', 'user/signup');
+    Route::view('/login', 'user/login');
+    Route::post('/signup', [UserController::class , 'signup']);
+    Route::post('/login', [UserController::class , 'login']);
+
+
+});
+
+// End User middleware
 
 Route::get('/logout' , [UserController::class , 'logout']);
-
 Route::get('/account', [UserController::class , 'account']);
 Route::post('/account', [UserController::class , 'update_account']);
 
@@ -54,6 +61,9 @@ Route::post('/admin_login', [AdminController::class , 'admin_login']);
 
 
 // Admin Routes 
+
+Route::group(['middleware'=>['admin']], function(){
+
 
 Route::get('admin/admins',[AdminController::class , 'show_admins']);
 Route::view('admin/add_admin' , 'admin/add_admin');
@@ -113,33 +123,42 @@ Route::post('/admin/add_manager' , [ManagerController::class , 'add_manager']);
 Route::get('/admin/update_manager/{id}' ,[ManagerController::class , 'single_manager']);
 Route::post('/admin/update_manager/{id}' , [ManagerController::class , 'update_manager']);
 Route::get('/admin/delete_manager/{id}' , [ManagerController::class , 'delete_manager']);
-
+});
 // End Admin Routes
 
+
 // Manager Routes
+
+// manager middleware
+Route::group(['middleware'=>['manager']],function(){
+
+    Route::get('/assoc_products/{id}', [AssociationController::class , 'assoc_products']);
+
+    Route::get('/edit_assoc/{id}', [AssociationController::class , 'show_edit_assoc']);
+    Route::post('/edit_assoc', [AssociationController::class , 'edit_assoc']);
+
+    Route::get('/asscoc_addNewProduct/{id}' , [AssociationController::class , 'add_new_product_form']);
+    Route::post('/assoc_add_product' , [AssociationController::class , 'add_new_product']);
+
+    Route::get('/delete_product/{id}' , [AssociationController::class , 'delete_product']);
+
+    Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
+    Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
+
+});
+
 Route::get('/association', [AssociationController::class , 'user_association']);
 Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
-
-Route::get('/assoc_products/{id}', [AssociationController::class , 'assoc_products']);
-
-Route::get('/edit_assoc/{id}', [AssociationController::class , 'show_edit_assoc']);
-Route::post('/edit_assoc', [AssociationController::class , 'edit_assoc']);
-
-Route::get('/asscoc_addNewProduct/{id}' , [AssociationController::class , 'add_new_product_form']);
-Route::post('/assoc_add_product' , [AssociationController::class , 'add_new_product']);
 
 Route::get('/update_product/{id}' , [AssociationController::class , 'update_product_form']);
 Route::post('/update_product' , [AssociationController::class , 'update_product']);
 
-Route::get('/delete_product/{id}' , [AssociationController::class , 'delete_product']);
-
 Route::get('assoc_register' , [AssociationController::class , 'show_assoc_register']);
 Route::post('assoc_register' , [AssociationController::class , 'assoc_register']);
 
+// End Manager Routes
 
-Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
-Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
-
-// Send Email Routes
+// restrict page
+Route::view('/restrict' , 'pages/restrict');
 
 

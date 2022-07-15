@@ -336,6 +336,8 @@ class AssociationController extends Controller
             
             $assoc->save();
 
+            session()->put('manager_id' ,Manager::all()->last()->id);
+
             return redirect('/assoc_register')->with('success' , 'Email has been sent please check your inbox');
         }else{
             return redirect('/assoc_register')->with('fail' , 'Network issue please contact with websit admin');
@@ -361,7 +363,7 @@ class AssociationController extends Controller
     
     public function assoc_email(Request $request)
     {
-        
+
         $manager_email = $request->email;
         $manager = Manager::where('manager_email',$manager_email)->first();
         
@@ -369,6 +371,7 @@ class AssociationController extends Controller
     }
     public function assoc_register_email(Request $request)
     {
+
         $request->validate([
             'assoc_name'=>'required',
             'assoc_address'=>'required',

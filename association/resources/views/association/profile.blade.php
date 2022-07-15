@@ -22,11 +22,14 @@
             <div class="col-md-9">
               <h2 style="font-size:38px"><strong>{{$assoc->assoc_name}}</strong></h2>
             </div>
+            @if (session()->has('manager_id'))
+                
             <div class="col-md-3">
               <div class="button" style="float:right;">
                 <a href="/edit_assoc/{{$assoc->id}}" class="btn btn-primary">Edit Profile</a>
               </div>
             </div>
+            @endif
             </div>
           </div>
     

@@ -191,9 +191,12 @@ class UserController extends Controller
 
     public function logout()
     {
-        if (session()->has('name')){
+        if (session()->has('name') || session()->has('manager_id')){
             session()->pull('name');
             session()->pull('id');
+
+            session()->pull('manager_id');
+            session()->pull('manager_name');
         }
         return redirect('/');
     }
