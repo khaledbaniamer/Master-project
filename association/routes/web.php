@@ -7,6 +7,8 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
+use App\Http\Middleware\admin;
+use App\Models\Admin as ModelsAdmin;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Route;
 
@@ -30,10 +32,13 @@ Route::view('/blog', 'pages/blog');
 Route::view('/contact', 'pages/contact');
 Route::view('/about', 'pages/about');
 
-Route::view('/cart', 'products/cart');
-Route::view('/checkout', 'products/checkout');
-Route::view('/product', 'products/product');
-Route::view('/single', 'products/single_product');
+Route::group(['middleware'=>['managerRestrict']] ,function(){
+
+    Route::view('/cart', 'products/cart');
+    Route::view('/checkout', 'products/checkout');
+    Route::view('/product', 'products/product');
+    Route::view('/single', 'products/single_product');
+});
 
 
 // User middleware if he logged in 
@@ -145,20 +150,29 @@ Route::group(['middleware'=>['manager']],function(){
     Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
     Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
 
+    Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+
+    Route::get('/account_manger/{id}', [ManagerController::class , 'manager_account']);
+    Route::post('/update_manager_account', [ManagerController::class , 'update_manager_account']);
 });
 
-Route::get('/association', [AssociationController::class , 'user_association']);
-Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+Route::group(['middleware'=>['managerRestrict']] ,function(){
 
-Route::get('/update_product/{id}' , [AssociationController::class , 'update_product_form']);
-Route::post('/update_product' , [AssociationController::class , 'update_product']);
-
-Route::get('assoc_register' , [AssociationController::class , 'show_assoc_register']);
-Route::post('assoc_register' , [AssociationController::class , 'assoc_register']);
+    
+    Route::get('/association', [AssociationController::class , 'user_association']);
+   
+    
+    Route::get('/update_product/{id}' , [AssociationController::class , 'update_product_form']);
+    Route::post('/update_product' , [AssociationController::class , 'update_product']);
+    
+    Route::get('assoc_register' , [AssociationController::class , 'show_assoc_register']);
+    Route::post('assoc_register' , [AssociationController::class , 'assoc_register']);
+});
 
 // End Manager Routes
 
 // restrict page
 Route::view('/restrict' , 'pages/restrict');
+Route::get('/restrict_manager' , [AdminController::class , 'getAssocId']);
 
 

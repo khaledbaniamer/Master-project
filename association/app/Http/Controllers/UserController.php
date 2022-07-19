@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Manager;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -152,6 +153,7 @@ class UserController extends Controller
     public function account()
     {
         $id = session()->get('id');
+
         $user = User::find($id);
 
         $pass= Crypt::decrypt($user->user_password);
@@ -203,3 +205,4 @@ class UserController extends Controller
 
 
 }
+

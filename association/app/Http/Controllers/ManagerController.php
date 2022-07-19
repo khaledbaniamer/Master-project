@@ -103,4 +103,42 @@ class ManagerController extends Controller
     {
 
     }
+
+    public function manager_account($id)
+    {
+        $manager = Manager::find($id);
+        $pass = Crypt::decrypt($manager->manager_password);
+        return view('user/account_manager' , ['manager'=>$manager , 'password'=>$pass]);
+    }
+    public function update_manager_account(Request $request)
+    {
+        $id = $request->manager_id;
+        
+
+        $request->validate([
+            'manager_name'=>'required',
+            'manager_email'=>'required|email|unique:managers,manager_email,'.$id,
+            'manager_phone'=>'required|regex:/^([0]{1}[7-9]{1})([0-9]{8})$/',
+            'manager_password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+            'confirm_manager_password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
+        ]);
+        $pass = $request->manager_password;
+        $confirmPass = $request->confirm_manager_password;
+
+        if($pass !== $confirmPass)
+        {
+            return redirect("/admin/update_manager/$id")->with('match' , 'Confirm Password does not match');
+        }
+
+        $update_manager = Manager::find($id);
+        $update_manager->manager_name = $request->manager_name;
+        $update_manager->manager_email = $request->manager_email;
+        $update_manager->manager_phone = $request->manager_phone;
+        $update_manager->manager_password = Crypt::encrypt($pass);
+
+        $update_manager->update();
+        return redirect("/account_manger/$id")->with('success' , 'Manager has been Updated Successfully');
+
+
+    }
 }

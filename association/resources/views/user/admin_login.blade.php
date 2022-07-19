@@ -19,6 +19,9 @@
         <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
         <form action="admin_login" method="POST" class="billing-form">
+          @if ($message = Session::get('noAssoc'))
+          <div style="color: #ff0000;">{{$message}}</div>
+          @endif
                         <h3 class="mb-4 billing-heading">Admin Login</h3>
                         @csrf
               <div class="row align-items-end">

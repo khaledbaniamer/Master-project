@@ -35,10 +35,16 @@ class AdminController extends Controller
             }
         }elseif($manager){
             if($password == Crypt::decrypt($manager->manager_password)){
+                // dd($manager);
+                    
+                $assoc = Association::where('assoc_manager_id',$manager->id)->first();
+                if($assoc == null){
+
+                    return redirect('/admin_login')->with('noAssoc' , 'This account does not have association , Please complete register process');
+                }
+
                 $request->session()->put('manager_id', $manager->id);
                 $request->session()->put('manager_name', $manager->manager_name);
-
-                $assoc = Association::where('assoc_manager_id',$manager->id);
 
                 return redirect("/assoc_profile/$assoc->id");
             }else{
@@ -117,6 +123,14 @@ class AdminController extends Controller
         $update_admin->update();
         return redirect("/admin/update_admin/$id")->with('success' , 'Admin has been Updated Successfully');
 
+    }
+
+    public function getAssocId()
+    {
+        $id = session()->get('manager_id');
+        $assoc_id = Association::where('assoc_manager_id' , $id)->first();
+
+        return view('pages/manager_restrict',['assoc_id'=>$assoc_id]);
     }
 
 }

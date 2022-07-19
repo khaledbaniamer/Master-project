@@ -44,8 +44,13 @@
             <div class="reg">
                 <p class="mb-0">
                   @if (session()->has('name') || session()->has('manager_id'))
+                  @if (session()->has('manager_id'))
+                      <a href="/account_manger/{{session()->get('manager_id')}}" class="mr-2 {{Request::is('account') ? 'active' : ''}}">Account</a>
+                      <a href="/logout" >Logout</a>
+                  @else
                   <a href="/account" class="mr-2 {{Request::is('account') ? 'active' : ''}}">Account</a>
                   <a href="/logout" >Logout</a>
+                  @endif
                   @else
 
                   <a href="/signup" class="mr-2 {{Request::is('signup') ? 'active' : ''}}">Sign Up</a>

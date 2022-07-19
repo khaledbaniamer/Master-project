@@ -54,6 +54,9 @@ class Kernel extends HttpKernel
         'manager' =>[
             \App\Http\Middleware\manager::class,
         ],
+        'managerRestrict' =>[
+            \App\Http\Middleware\managerRestrict::class,
+        ]
     ];
 
     /**

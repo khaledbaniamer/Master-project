@@ -38,7 +38,7 @@
               <div class="col-md-7">
                     <div class="form-group">
                         <label for="lastname">Password</label>
-                    <input type="password" class="form-control" placeholder="8 character long ( 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character )" name="password">
+                    <input type="password" class="form-control" placeholder="Please Enter Password" name="password">
                     </div>
                     @error('password')
                       <div style="color: #ff0000;">{{$message}}</div>

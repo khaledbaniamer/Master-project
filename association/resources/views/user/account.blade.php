@@ -22,6 +22,8 @@
   	<hr>
 	<div class="row">
       <!-- left column -->
+  
+          
       <div class="col-md-3">
         <div class="text-center">
           <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
@@ -30,6 +32,8 @@
           <input type="file" class="form-control">
         </div>
       </div>
+      
+
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
