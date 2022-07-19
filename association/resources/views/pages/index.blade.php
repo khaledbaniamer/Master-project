@@ -56,6 +56,23 @@
       </div>
   </section>
 
+{{-- // Category Section  --}}
+<section class="ftco-section ftco-no-pb">
+    <div class="container">
+        <h2 class="text-center m-4">Categories</h2>
+        <div class="row">
+            @foreach ($categoies as $category)
+                
+            <div class="col-md-4">
+                <div class="img"><a href=""><img src="{{$category->category_image}}" alt="cat" width="250px" height="400px"></a></div>
+                <div class="ml-5 mt-4"><a href="" class="h4 ">{{$category->category_name}} </a></div>
+            </div>
+            @endforeach
+
+        </div>
+</section>
+
+
   <section class="ftco-section ftco-no-pb">
           <div class="container">
               <div class="row">
@@ -79,51 +96,9 @@
           </div>
       </section>
 
-      <section class="ftco-section ftco-no-pb">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-1.jpg')}});"></div>
-                          <h3>Brandy</h3>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-2.jpg')}});"></div>
-                          <h3>Gin</h3>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-3.jpg')}});"></div>
-                          <h3>Rum</h3>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-4.jpg')}});"></div>
-                          <h3>Tequila</h3>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-5.jpg')}});"></div>
-                          <h3>Vodka</h3>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4 ">
-                      <div class="sort w-100 text-center ftco-animate">
-                          <div class="img" style="background-image: url({{asset('style/images/kind-6.jpg')}});"></div>
-                          <h3>Whiskey</h3>
-                      </div>
-                  </div>
+     
 
-              </div>
-          </div>
-      </section>
-
-      <section class="ftco-section">
+      <section class="ftco-section ">
           <div class="container">
               <div class="row justify-content-center pb-5">
         <div class="col-md-7 heading-section text-center ftco-animate">
@@ -132,6 +107,9 @@
         </div>
       </div>
               <div class="row">
+                @foreach ($products as $product)
+                    
+                
                   <div class="col-md-3 d-flex">
                       <div class="product ftco-animate">
                           <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-1.jpg')}});">
@@ -151,6 +129,7 @@
                           </div>
                       </div>
                   </div>
+                  @endforeach
                   <div class="col-md-3 d-flex">
                       <div class="product ftco-animate">
                           <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset('style/images/prod-2.jpg')}});">
@@ -288,6 +267,8 @@
               </div>
           </div>
       </section>
+
+      
 
   <section class="ftco-section testimony-section img" style="background-image: url({{asset('style/images/bg_4.jpg')}});">
       <div class="overlay"></div>

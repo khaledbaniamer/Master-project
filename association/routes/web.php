@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/', 'pages/index');
+Route::get('/', [CategoryController::class , 'show_home_category']);
 Route::view('/blog', 'pages/blog');
 Route::view('/contact', 'pages/contact');
 Route::view('/about', 'pages/about');

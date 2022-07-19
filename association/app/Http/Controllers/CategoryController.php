@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -78,5 +79,15 @@ class CategoryController extends Controller
 
             return redirect('/admin/categories')->with('delete' , 'Category has been deleted successfully');
         }
+    }
+
+    //End Admin Side 
+
+    //user side 
+    public function show_home_category()
+    {
+        $categoies = Category::all();
+        $products = Product::latest()->take(5)->get();
+        return view('/pages/index' , ['categoies'=>$categoies , 'products'=>$products]);
     }
 }
