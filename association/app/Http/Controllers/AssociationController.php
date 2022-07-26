@@ -143,7 +143,7 @@ class AssociationController extends Controller
         $assoc = Association::select('associations.*', 'managers.manager_name')
         ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->where('associations.id',$id)->first();
 
-        $products = Product::where('assoc_id' , $id);
+        $products = Product::where('assoc_id' , $id)->get();
 
         return view('association/profile' , ['assoc'=>$assoc , 'products'=>$products]);
     }
@@ -312,10 +312,9 @@ class AssociationController extends Controller
             return redirect('/admin/add_managers')->with('match' , 'Confirm Password does not match');
         }
 
-
-
+        
         if($this->sendEmail($request->manager_email ,$request->manager_name )){
-
+    
             $manager = new Manager();
             $manager->manager_name = $request->manager_name;
             $manager->manager_email = $request->manager_email;
@@ -323,6 +322,7 @@ class AssociationController extends Controller
             $manager->manager_password = Crypt::encrypt($pass);
     
             $manager->save();
+
 
             $assoc = new Association();
             $assoc->assoc_name = '';
@@ -336,7 +336,7 @@ class AssociationController extends Controller
             
             $assoc->save();
 
-            session()->put('manager_id' ,Manager::all()->last()->id);
+            // session()->put('manager_id' ,Manager::all()->last()->id);
 
             return redirect('/assoc_register')->with('success' , 'Email has been sent please check your inbox');
         }else{
@@ -347,10 +347,9 @@ class AssociationController extends Controller
 
     public function sendEmail($email , $name)
     {
-        $id = Association::all()->last()->id;
-        $id=$id+1;
+
         $link = asset('/add_assoc_email?email=' . $email);
-        $data = ['link'=>$link , 'name'=>$name , 'id'=>$id];
+        $data = ['link'=>$link , 'name'=>$name ];
         try{
             
             Mail::to($email)->send(new registerAssoc($data));
@@ -371,7 +370,7 @@ class AssociationController extends Controller
     }
     public function assoc_register_email(Request $request)
     {
-
+        // dd($request->manager_id);
         $request->validate([
             'assoc_name'=>'required',
             'assoc_address'=>'required',

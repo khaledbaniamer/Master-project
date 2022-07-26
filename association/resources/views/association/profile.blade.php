@@ -161,15 +161,15 @@
                     <div class="desc">
                         <p class="meta-prod d-flex">
                             <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+
+                            <a href="/single/{{$product->id}}" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                         </p>
                     </div>
                 </div>
                 <div class="text text-center">
-                    <span class="category">{{$product->prod_name}}</span>
+                    <span class="category">{{$assoc->assoc_name}}</span>
                     <h2>{{$product->prod_name}}</h2>
-                    <span class="price">{{$product->prod_price}}</span>
+                    <span class="price">{{$product->prod_price}} JOD</span>
                 </div>
             </div>
         </div>

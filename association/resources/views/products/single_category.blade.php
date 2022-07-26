@@ -6,8 +6,8 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate mb-5 text-center">
-            <p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Products <i class="fa fa-chevron-right"></i></span></p>
-          <h2 class="mb-0 bread">Products</h2>
+            <p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Category <i class="fa fa-chevron-right"></i></span></p>
+          <h2 class="mb-0 bread">{{$category->category_name}}</h2>
         </div>
       </div>
     </div>
@@ -23,10 +23,11 @@
                     <div class="categories">
                       <h3>Product Types</h3>
                       <ul class="p-0">
-                        <li class="{{Request::is("/product") ? '' : 'active'}}"><a href="/product">All <span class="fa fa-chevron-right"></span></a></li>   
+                        <li  class="{{Request::is("/product") ? 'active' : ''}}" ><a  href="/product">All <span class="fa fa-chevron-right"></span></a></li> 
                         @foreach ($categories as $categ)  
-                            <li><a href="/category/{{$categ->id}}">{{$categ->category_name}} <span class="fa fa-chevron-right"></span></a></li>
+                            <li ><a  style="{{Request::is("/category/$categ->id") ? 'color:#b7472a' : ''}}" href="/category/{{$categ->id}}">{{$categ->category_name}} <span class="fa fa-chevron-right" ></span></a></li>
                         @endforeach
+
                       </ul>
                     </div>
                   </div>
@@ -45,24 +46,14 @@
                       </div>
                       <div class="row">
                         @foreach ($products as $product)
-                        <div id="{{$product->id}}" class="col-md-4 d-flex">
+                        <div class="col-md-4 d-flex">
                             <div class="product ftco-animate">
                                 <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{asset($product->prod_image)}});">
                                     <div class="desc">
                                         <p class="meta-prod d-flex">
-                                          <form action="add_cart" method="POST" class="meta-prod d-flex">
-                                            @csrf
-                                            <input type="hidden" value="{{$product->id}}" name="product_id">
-                                            <input type="hidden" value="1" name="quntity">
-                                            <input type="hidden" name="product_price" value="{{$product->prod_price}}"/>
-                                            
-                
-                                            <button style="background-color: transparent ; border:none" type="submit" class="d-flex align-items-center justify-content-center meta-prod d-flex"> 
-                                             <a href="" class="d-flex align-items-center justify-content-center"> <span class="flaticon-shopping-bag"></span></a>
-                                            </button>
-                                            
-                                          <a href="/single/{{$product->id}}" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                                          </form>
+                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                                         </p>
                                     </div>
                                 </div>
@@ -79,7 +70,8 @@
                             </div>
                         </div>
                     @endforeach
-                         
+
+
                       <div class="row mt-5">
                 <div class="col text-center">
                   <div class="block-27">

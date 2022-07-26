@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Association;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -86,8 +87,18 @@ class CategoryController extends Controller
     //user side 
     public function show_home_category()
     {
+        $associations = Association::all();
         $categoies = Category::all();
-        $products = Product::latest()->take(5)->get();
-        return view('/pages/index' , ['categoies'=>$categoies , 'products'=>$products]);
+        $products = Product::latest()->take(3)->get();
+        return view('/pages/index' , ['categoies'=>$categoies , 'products'=>$products , 'assoc'=>$associations]);
+    }
+
+    public function single_Category_products($id)
+    {
+        $associations = Association::all();
+        $products = Product::where('category_id' , $id)->get();
+        $category = Category::find($id);
+        $categories = Category::all();
+        return view('products/single_category' , ['products'=>$products , 'category'=>$category , 'categories'=>$categories , 'assoc'=>$associations]);
     }
 }

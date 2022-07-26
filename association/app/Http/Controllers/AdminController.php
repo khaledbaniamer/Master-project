@@ -133,4 +133,14 @@ class AdminController extends Controller
         return view('pages/manager_restrict',['assoc_id'=>$assoc_id]);
     }
 
+    public function admin_logout()
+    {
+        if (session()->has('admin_id')){
+            session()->pull('admin_id');
+            session()->pull('admin_name');
+
+        }
+        return redirect('/admin_login');
+    }
+
 }

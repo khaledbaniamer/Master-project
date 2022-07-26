@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AssociationController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Middleware\admin;
 use App\Models\Admin as ModelsAdmin;
+use App\Models\Cart;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+view()->composer(['master' , 'product.cart'], function($view){
+    $cart = Cart::where('user_id',session()->get('id'))->get();
+    $view->with('cart_products', $cart); // bind data to view
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,12 +40,17 @@ Route::view('/blog', 'pages/blog');
 Route::view('/contact', 'pages/contact');
 Route::view('/about', 'pages/about');
 
+//cart routes
+Route::post('add_cart' , [CartController::class,'add_cart']);
+Route::post('add_cart_product' , [CartController::class,'add_cart_product']);
+Route::view('/cart', 'products/cart');
 Route::group(['middleware'=>['managerRestrict']] ,function(){
 
-    Route::view('/cart', 'products/cart');
-    Route::view('/checkout', 'products/checkout');
-    Route::view('/product', 'products/product');
-    Route::view('/single', 'products/single_product');
+    
+    Route::get('/checkout', [CartController::class,'checkout']);
+    Route::get('/product', [ProductController::class , 'show_all_product']);
+    Route::get('/single/{id}', [ProductController::class , 'single_product']);
+    Route::get('/category/{id}' , [CategoryController::class , 'single_Category_products']);
 });
 
 
@@ -68,7 +81,7 @@ Route::post('/admin_login', [AdminController::class , 'admin_login']);
 // Admin Routes 
 
 Route::group(['middleware'=>['admin']], function(){
-
+    
 
 Route::get('admin/admins',[AdminController::class , 'show_admins']);
 Route::view('admin/add_admin' , 'admin/add_admin');
@@ -128,6 +141,8 @@ Route::post('/admin/add_manager' , [ManagerController::class , 'add_manager']);
 Route::get('/admin/update_manager/{id}' ,[ManagerController::class , 'single_manager']);
 Route::post('/admin/update_manager/{id}' , [ManagerController::class , 'update_manager']);
 Route::get('/admin/delete_manager/{id}' , [ManagerController::class , 'delete_manager']);
+
+Route::get('/admin/logout' , [AdminController::class , "admin_logout"]);
 });
 // End Admin Routes
 
@@ -147,14 +162,16 @@ Route::group(['middleware'=>['manager']],function(){
 
     Route::get('/delete_product/{id}' , [AssociationController::class , 'delete_product']);
 
-    Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
-    Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
-
-    Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+   
 
     Route::get('/account_manger/{id}', [ManagerController::class , 'manager_account']);
     Route::post('/update_manager_account', [ManagerController::class , 'update_manager_account']);
 });
+Route::get('/assoc_profile/{id}', [AssociationController::class , 'assoc_profile']);
+Route::post('add_assoc_email' , [AssociationController::class , 'assoc_register_email']);
+Route::get('add_assoc_email' , [AssociationController::class , 'assoc_email']);
+
+//Restricted Manager Routes
 
 Route::group(['middleware'=>['managerRestrict']] ,function(){
 

@@ -36,22 +36,24 @@
     <h3 class="text-start">Associations</h3>
     <a href="/assoc_register" class="btn btn-primary my-4">Join</a>
     @foreach ($assocs as $assoc)
-        
-    <div class="row">
-      <div class="col-9 my-4">
-        <div class="card">
-          <h5 class="card-header">{{$assoc->assoc_name}}</h5>
-          <div class="card-body">
-            <h5 class="card-title">Manager : {{$assoc->manager_name}}</h5>
-            <h5 class="card-title">Email : {{$assoc->assoc_email}}</h5>
-            <h5 class="card-title">Phone : {{$assoc->assoc_phone}}</h5>
-            <h5 class="card-title">Address : {{$assoc->assoc_location}}</h5>
-            <p class="card-text">{{$assoc->assoc_description}}</p>
-            <a href="assoc_profile/{{$assoc->id}}" class="btn btn-primary">Show Profile</a>
+        @if ($assoc->assoc_name)
+        <div class="row">
+          <div class="col-9 my-4">
+            <div class="card">
+              <h5 class="card-header">{{$assoc->assoc_name}}</h5>
+              <div class="card-body">
+                <h5 class="card-title">Manager : {{$assoc->manager_name}}</h5>
+                <h5 class="card-title">Email : {{$assoc->assoc_email}}</h5>
+                <h5 class="card-title">Phone : {{$assoc->assoc_phone}}</h5>
+                <h5 class="card-title">Address : {{$assoc->assoc_location}}</h5>
+                <p class="card-text">{{$assoc->assoc_description}}</p>
+                <a href="assoc_profile/{{$assoc->id}}" class="btn btn-primary">Show Profile</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        @endif
+
     @endforeach
 
 </section>    

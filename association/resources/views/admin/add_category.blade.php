@@ -20,7 +20,7 @@
 
     <div class="mt-3">
       <label class="form-label">Category Title</label>
-      <input type="text" class="form-control" placeholder="Enter Product Title ..." name="category_name" value="{{old('category_name')}}">
+      <input type="text" class="form-control" placeholder="Enter Category Title ..." name="category_name" value="{{old('category_name')}}">
     </div>
 
     @error('category_name')
@@ -29,7 +29,7 @@
 
     <div class="mt-3">
       <label class="form-label">Category Image</label>
-      <input type="file" class="form-control" placeholder="Enter Product Title ..." name="category_image">
+      <input type="file" class="form-control"  name="category_image">
     </div>
 
     @error('category_image')

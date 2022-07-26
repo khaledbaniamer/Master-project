@@ -24,7 +24,7 @@
   @csrf
     <div class="mt-3">
       <label class="form-label">Product Title</label>
-      <input type="text" class="form-control" placeholder="Enter Product Title ..." name="prod_name">
+      <input type="text" class="form-control" placeholder="Enter Product Title ..." name="prod_name" value="{{old('prod_name')}}">
     </div>
     @error('prod_name')
       <div style="color: #ff0000;">{{$message}}</div>
@@ -32,7 +32,7 @@
 
     <div class="mt-3">
       <label class="form-label">Product Price</label>
-      <input type="number" step=".01" class="form-control" placeholder="Enter Product Price ..." name="prod_price">
+      <input type="number" min="0" step=".01" class="form-control" placeholder="Enter Product Price ..." name="prod_price" value="{{old('prod_price')}}">
     </div>
 
     @error('prod_price')
@@ -75,7 +75,7 @@
 
     <div class="mt-3">
       <label class="form-label">Product Description</label>
-      <textarea class = "form-control" rows = "3" name="prod_description" placeholder = "product Description"></textarea>
+      <textarea class = "form-control" rows = "3" name="prod_description" placeholder = "product Description" >{{old('prod_description')}}</textarea>
     </div>
 
     @error('prod_description')
