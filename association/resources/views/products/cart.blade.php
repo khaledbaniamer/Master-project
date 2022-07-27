@@ -21,44 +21,46 @@
                       <table class="table">
                         <thead class="thead-primary">
                           <tr>
-                              <th>&nbsp;</th>
-                              <th>&nbsp;</th>
-                              <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>total</th>
-                            <th>&nbsp;</th>
+                            <th>Image</th>
+                            
+                            <th class="text-center">Product</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">total</th>
+                            <th class="text-center">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($cart_products as $product)
                           <tr class="alert" role="alert">
-                              <td>
-                                  <label class="checkbox-wrap checkbox-primary">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                      </label>
+
+                              <td class="text-center">
+                                  <div class="img" style="background-image: url({{asset($product->prod_image)}});"></div>
                               </td>
-                              <td>
-                                  <div class="img" style="background-image: url({{asset('style/images/prod-1.jpg')}});"></div>
-                              </td>
-                            <td>
+                            <td class="text-center">
                                 <div class="email">
-                                    <span>Jim Beam Kentucky Straight</span>
-                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
+                                    <span>{{$product->prod_name}}</span>
+                                    
                                 </div>
                             </td>
-                            <td>$44.99</td>
-                            <td class="quantity">
+                            <td>{{$product->prod_price}} JOD</td>
+                            <td class="quantity" class="text-center">
                               <div class="input-group">
-                               <input type="text" name="quantity" class="quantity form-control input-number" value="2" min="1" max="100">
+                            <form  method="post" action="update_cart">
+                              @csrf
+                              <input type="hidden" name="product_id" value="{{$product->prod_id}}">
+                               <input type="text" name="quantity" class="quantity form-control input-number" value="{{$product->prod_quantity}}" min="1" max="100">
                             </div>
                         </td>
-                        <td>$89.98</td>
-                            <td>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <td class="text-center">{{
+                            $product->prod_price * $product->prod_quantity
+                          }} JOD</td>
+                            <td class="text-center">
+                              <input class="btn btn-primary mx-2" value="update" type="submit">
+                            <a  class="close"  href="delete_product_cart/{{$product->prod_id}}">
                               <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                            </button>
+                            </a>
+                          </form>
                           </td>
                           </tr>
                          
@@ -75,23 +77,24 @@
                       <h3>Cart Totals</h3>
                       <p class="d-flex">
                           <span>Subtotal</span>
-                          <span>$20.60</span>
+                          <span>{{$total}} JOD</span>
                       </p>
                       <p class="d-flex">
                           <span>Delivery</span>
-                          <span>$0.00</span>
+                          <span>0.00 JOD</span>
                       </p>
                       <p class="d-flex">
                           <span>Discount</span>
-                          <span>$3.00</span>
+                          <span>0.00 JOD</span>
                       </p>
                       <hr>
                       <p class="d-flex total-price">
                           <span>Total</span>
-                          <span>$17.60</span>
+                          <span>{{$total}} JOD</span>
                       </p>
                   </div>
-                  <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+
+                  <p class="text-center"><a href="proceed_checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
               </div>
           </div>
       </div>

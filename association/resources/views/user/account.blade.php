@@ -19,6 +19,7 @@
 
 <div class="container">
     <h1>Edit Profile</h1>
+    <a href="/history_orders" class="btn btn-primary">Orders</a>
   	<hr>
 	<div class="row">
       <!-- left column -->

@@ -8,10 +8,9 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
-use App\Http\Middleware\admin;
-use App\Models\Admin as ModelsAdmin;
+
 use App\Models\Cart;
-use App\Models\Manager;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +30,7 @@ view()->composer(['master' , 'product.cart'], function($view){
 });
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,10 +40,20 @@ Route::view('/blog', 'pages/blog');
 Route::view('/contact', 'pages/contact');
 Route::view('/about', 'pages/about');
 
+Route::get('history_orders' , [UserController::class , 'history_orders']);
+Route::get('order_detials/{id}' , [UserController::class , 'order_detials']);
+
 //cart routes
 Route::post('add_cart' , [CartController::class,'add_cart']);
 Route::post('add_cart_product' , [CartController::class,'add_cart_product']);
-Route::view('/cart', 'products/cart');
+Route::get('/cart',[CartController::class , 'show_cart']);
+
+Route::post('update_cart' , [CartController::class,'update_cart']);
+Route::get('/delete_product_cart/{id}' , [CartController::class,'delete_cart_product']);
+
+//checkout proceed 
+Route::get('proceed_checkout' , [CartController::class , 'checkout_proceed']);
+
 Route::group(['middleware'=>['managerRestrict']] ,function(){
 
     
@@ -91,7 +101,7 @@ Route::get('admin/update_admin/{id}' , [AdminController::class , 'show_update_ad
 
 Route::post('admin/update_admin' , [AdminController::class , 'update_admin']);
 
-Route::view('admin' , 'admin/admin_master');
+Route::get('admin' ,[AdminController::class , 'mster_admin'] );
 Route::view('admin/products' , 'admin/products');
 
 Route::view('admin/add_product' , 'admin/add_product');

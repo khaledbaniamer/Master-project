@@ -97,8 +97,8 @@ Coded by www.creative-tim.com
           </li>
           <li class="active-pro">
             <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              
+              
             </a>
           </li>
         </ul>
@@ -116,7 +116,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -184,7 +184,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Users</p>
-                      <p class="card-title">150<p>
+                      <p class="card-title">{{session()->get('users')}}<p>
                     </div>
                   </div>
                 </div>
@@ -210,7 +210,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Products</p>
-                      <p class="card-title">30<p>
+                      <p class="card-title">{{session()->get('products')}}<p>
                     </div>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Associations</p>
-                      <p class="card-title">23<p>
+                      <p class="card-title">{{session()->get('assocs')}}<p>
                     </div>
                   </div>
                 </div>
@@ -261,8 +261,8 @@ Coded by www.creative-tim.com
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Followers</p>
-                      <p class="card-title">+45K<p>
+                      <p class="card-category">Cateories</p>
+                      <p class="card-title">{{session()->get('categories')}}<p>
                     </div>
                   </div>
                 </div>

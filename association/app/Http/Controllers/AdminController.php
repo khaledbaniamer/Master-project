@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Association;
+use App\Models\Category;
 use App\Models\Manager;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Redis;
@@ -141,6 +144,20 @@ class AdminController extends Controller
 
         }
         return redirect('/admin_login');
+    }
+
+    public function mster_admin()
+    {
+        $products = Product::all();
+        session()->put('products', count($products));
+        $users = User::all();
+        session()->put('users', count($users));
+        $assocs = Association::all();
+        session()->put('assocs', count($assocs));
+        $categories = Category::all();
+        session()->put('categories', count($categories));
+
+        return view('admin/admin_master');
     }
 
 }

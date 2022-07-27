@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manager;
+use App\Models\Order;
+use App\Models\OrderHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -201,6 +203,39 @@ class UserController extends Controller
             session()->pull('manager_name');
         }
         return redirect('/');
+    }
+
+    public function history_orders()
+    {
+        $user_id = session()->get('id');
+        
+        $orders = Order::where('user_id' ,$user_id)->get();
+
+
+
+        // $history_ordres = OrderHistory::where('user_id' , $user_id)->where('created_at' ,'2022-07-27 10:02:43')->get();
+        
+
+        return view('user/history' , ['orders'=>$orders]);
+        // $order_date = $order->created_at->format('d-m-y H:i:s');
+       
+    }
+
+    public function order_detials($id)
+    {
+        $user_id = session()->get('id');
+        // $detials_ordres = OrderHistory::where('user_id' , $user_id)->where('created_at' ,$date)->get();
+        $order = Order::find($id);
+        $order_date = $order->created_at;
+
+        // $cart = Cart::select('carts.*', 'products.prod_name' , 'products.prod_image')
+        // ->join('products', 'products.id', '=', 'carts.prod_id')->where('carts.user_id',session()->get('id'))->get();
+        $products = OrderHistory::select('order_histories.*', 'products.prod_name' , 'products.prod_image')
+        ->join('products', 'products.id', '=', 'order_histories.prod_id')->where('order_histories.created_at' , $order_date)->where('order_histories.user_id' , $user_id)->get();
+
+        
+        // dd($products);
+        return view('user/order_detials' , ['products_order'=>$products  , 'order'=>$order]);
     }
 
 
