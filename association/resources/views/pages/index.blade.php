@@ -9,7 +9,7 @@
         <div class="col-md-8 ftco-animate d-flex align-items-end">
             <div class="text w-100 text-center">
               <h1 class="mb-4">Good <span>Shop</span> for Good <span>Moments</span>.</h1>
-              <p><a href="#" class="btn btn-primary py-2 px-4">Shop Now</a> <a href="#" class="btn btn-white btn-outline-white py-2 px-4">Read more</a></p>
+              <p><a href="/product" class="btn btn-primary py-2 px-4">Shop Now</a> <a href="/about" class="btn btn-white btn-outline-white py-2 px-4">Read more</a></p>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
               <div class="row justify-content-center pb-5">
         <div class="col-md-7 heading-section text-center ftco-animate">
             <span class="subheading">Our Delightful Products</span>
-          <h2>Last Products</h2>
+          <h2>Latest Products</h2>
         </div>
       </div>
       <div class="row">

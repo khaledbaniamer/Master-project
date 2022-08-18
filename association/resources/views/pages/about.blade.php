@@ -82,37 +82,37 @@
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-1.jpg')}});"></div>
-                          <h3>Brandy</h3>
+                          <h3></h3>
                       </div>
                   </div>
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-2.jpg')}});"></div>
-                          <h3>Gin</h3>
+                          <h3></h3>
                       </div>
                   </div>
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-3.jpg')}});"></div>
-                          <h3>Rum</h3>
+                          <h3></h3>
                       </div>
                   </div>
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-4.jpg')}});"></div>
-                          <h3>Tequila</h3>
+                          <h3></h3>
                       </div>
                   </div>
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-5.jpg')}});"></div>
-                          <h3>Vodka</h3>
+                          <h3></h3>
                       </div>
                   </div>
                   <div class="col-lg-2 col-md-4 ">
                       <div class="sort w-100 text-center ftco-animate">
                           <div class="img" style="background-image: url({{asset('style/images/kind-6.jpg')}});"></div>
-                          <h3>Whiskey</h3>
+                          <h3></h3>
                       </div>
                   </div>
 
@@ -137,7 +137,7 @@
               <div class="testimony-wrap py-4">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4"></p>
                   <div class="d-flex align-items-center">
                       <div class="user-img" style="background-image: url({{asset('style/images/person_1.jpg')}})"></div>
                       <div class="pl-3">
@@ -152,7 +152,7 @@
               <div class="testimony-wrap py-4">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4">.</p>
                   <div class="d-flex align-items-center">
                       <div class="user-img" style="background-image: url({{asset('style/images/person_2.jpg')}})"></div>
                       <div class="pl-3">
@@ -167,7 +167,7 @@
               <div class="testimony-wrap py-4">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4"></p>
                   <div class="d-flex align-items-center">
                       <div class="user-img" style="background-image: url({{asset('style/images/person_3.jpg')}})"></div>
                       <div class="pl-3">
@@ -182,7 +182,7 @@
               <div class="testimony-wrap py-4">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4"></p>
                   <div class="d-flex align-items-center">
                       <div class="user-img" style="background-image: url({{asset('style/images/person_1.jpg')}})"></div>
                       <div class="pl-3">
@@ -197,7 +197,7 @@
               <div class="testimony-wrap py-4">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4"></p>
                   <div class="d-flex align-items-center">
                       <div class="user-img" style="background-image: url({{asset('style/images/person_2.jpg')}})"></div>
                       <div class="pl-3">
@@ -222,7 +222,7 @@
           <div class="block-18 py-4 mb-4">
             <div class="text align-items-center">
               <strong class="number" data-number="3000">0</strong>
-              <span>Our Satisfied Customers</span>
+              <span></span>
             </div>
           </div>
         </div>
@@ -230,7 +230,7 @@
           <div class="block-18 py-4 mb-4">
             <div class="text align-items-center">
               <strong class="number" data-number="115">0</strong>
-              <span>Years of Experience</span>
+              <span></span>
             </div>
           </div>
         </div>
@@ -238,7 +238,7 @@
           <div class="block-18 py-4 mb-4">
             <div class="text align-items-center">
               <strong class="number" data-number="100">0</strong>
-              <span>Kinds of Liquor</span>
+              <span></span>
             </div>
           </div>
         </div>
@@ -246,7 +246,7 @@
           <div class="block-18 py-4 mb-4">
             <div class="text align-items-center">
               <strong class="number" data-number="40">0</strong>
-              <span>Our Branches</span>
+              <span></span>
             </div>
           </div>
         </div>

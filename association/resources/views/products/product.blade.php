@@ -81,7 +81,7 @@
                     @endforeach
                          
                       <div class="row mt-5">
-                <div class="col text-center">
+                {{-- <div class="col text-center">
                   <div class="block-27">
                     <ul>
                       <li><a href="#">&lt;</a></li>
@@ -93,7 +93,7 @@
                       <li><a href="#">&gt;</a></li>
                     </ul>
                   </div>
-                </div>
+                </div> --}}
               </div>
                   </div>
 
